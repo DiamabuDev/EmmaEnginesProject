@@ -1,0 +1,90 @@
+﻿/* Global settings */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #eee;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 40px;
+}
+
+h1, .button, .search-box, .orders-grid{
+    align-self: center;
+}
+
+h1 {
+    color: #000;
+    font-size: 40px;
+    margin-bottom: 0;
+}
+
+.button {
+    background-color: #418A28;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    width: 170px;
+    cursor: pointer;
+    margin: 30px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.search-box {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 300px;
+}
+
+/* GridView styles */
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: none;
+    text-align: center;
+    height: 40px;
+}
+
+.orders-grid {
+    width: 100%;
+    margin-top: 20px;
+    font-family: 'Poppins', sans-serif;
+    align-self: center;
+}
+
+.orders-grid th {
+    color: #767575;
+    padding: 10px;
+}
+
+.orders-grid td {
+    padding: 10px;
+}
+
+.ddl {
+    height: 40px;
+}
+
+/* Hover over rows */
+    .orders-grid tr:hover {
+        background-color: #767575;
+    }
+
+    /* Adjusting the edit and delete buttons and checkboxes */
+    .orders-grid .edit-button, .orders-grid .delete-button, .orders-grid input[type='checkbox'] {
+        cursor: pointer;
+    }
+

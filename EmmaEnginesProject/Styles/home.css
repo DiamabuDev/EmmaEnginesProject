@@ -1,0 +1,50 @@
+﻿body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: #fff;
+    height: 80px;
+    padding: 0 20px;
+    font-size: 20px;
+}
+
+.navbar-icon img {
+    height: 40px;
+    width: 40px;
+    margin-right: 50px;
+}
+
+.navbar-links {
+    display: flex;
+    margin: 0;
+}
+
+.nav-link {
+    color: #000;
+    text-decoration: none;
+    padding: 0 20px;
+    line-height: 60px;
+    height: 100%;
+    display: block;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    background-color: #EEE;
+}
+
+.sign-out {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 60px;
+    color: red;
+    padding: 23px 20px;
+}

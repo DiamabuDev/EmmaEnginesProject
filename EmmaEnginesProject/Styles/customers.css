@@ -1,0 +1,161 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+/*Navigation Bar Style*/
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: #fff;
+    height: 80px;
+    padding: 0 20px;
+    font-size: 20px;
+}
+
+.navbar-icon img {
+    height: 40px;
+    width: 40px;
+    margin-right: 50px;
+}
+
+.navbar-links {
+    display: flex;
+    margin: 0;
+}
+
+.nav-link {
+    color: #000;
+    text-decoration: none;
+    padding: 0 20px;
+    line-height: 60px;
+    height: 100%;
+    display: block;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    background-color: #EEE;
+}
+
+.sign-out {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 60px;
+    color: red;
+    padding: 23px 20px;
+}
+
+/*Main Content Styles*/
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.label {
+    font-size: 25px;
+    font-weight: 400;
+    margin: 20px 0 10px;
+    color: #000;
+    text-align: left;
+}
+
+.label-hello {
+    align-self: flex-start;
+    font-size: 25px;
+    margin-left: 172px;
+}
+
+.heading {
+    font-size: 30px; 
+    font-weight: 500;
+    margin: 10px 0 20px;
+    text-align: center;
+    width: 100%; 
+}
+
+.button-container .input-text {
+    margin-top: 10px;
+    margin-right: 10px;
+    height: 50px;
+    padding: 0 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 18px;
+    width: 30%; 
+}
+
+.button {
+    background-color: #418A28;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px; 
+    font-size: 18px;
+    cursor: pointer;
+    width: 170px;
+    height: 50px;
+    font-weight: bold;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.gridView {
+    font-size: 20px; 
+    margin-top: 20px;
+    width: 100%;
+    border: none;
+}
+
+.gridView th, .gridView td {
+    text-align: justify;
+    border: none;
+    padding: 10px;
+}
+
+.gridView th, .gridView td, .gridView tr {
+    border: none;
+}
+
+.gridView tr:hover {
+    background-color: darkgrey; 
+}
+
+.btn-edit, .btn-select, .btn-update, .btn-cancel  {
+    font-size: 18px; 
+    color: #418A28; 
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    text-decoration: none;
+}
+
+.select-button {
+    margin-right: 20px;
+}
+
+input[type="text" i] {
+    font-family: 'Poppins', sans-serif;
+    padding: 8px;
+    font-size: 18px;
+    border: none;
+    width: 130px;
+    border-radius: 5px;
+}
