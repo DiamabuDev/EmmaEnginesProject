@@ -117,11 +117,12 @@ html, body {
 }
 
 .gridView {
+    border-style: none;
+    border-color: inherit;
+    border-width: medium;
     font-size: 20px; 
     margin-top: 20px;
-    width: 100%;
-    border: none;
-}
+    }
 
 .gridView th, .gridView td {
     text-align: justify;

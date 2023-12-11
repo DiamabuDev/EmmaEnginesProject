@@ -7,3 +7,12 @@ C:\Users\diana\Documentos\EmmaEnginesProject\EmmaEnginesLibrary\EmmaEnginesLibra
 C:\Users\diana\Documentos\EmmaEnginesProject\EmmaEnginesLibrary\EmmaEnginesLibrary\obj\Debug\EmmaEnginesLibrary.csproj.CoreCompileInputs.cache
 C:\Users\diana\Documentos\EmmaEnginesProject\EmmaEnginesLibrary\EmmaEnginesLibrary\obj\Debug\EmmaEnginesLibrary.dll
 C:\Users\diana\Documentos\EmmaEnginesProject\EmmaEnginesLibrary\EmmaEnginesLibrary\obj\Debug\EmmaEnginesLibrary.pdb
+C:\Users\diana\Documents\projects\RAD\EmmaEnginesProject\EmmaEnginesLibrary\EmmaEnginesLibrary\bin\Debug\Emmas.mdf
+C:\Users\diana\Documents\projects\RAD\EmmaEnginesProject\EmmaEnginesLibrary\EmmaEnginesLibrary\bin\Debug\Emmas_log.ldf
+C:\Users\diana\Documents\projects\RAD\EmmaEnginesProject\EmmaEnginesLibrary\EmmaEnginesLibrary\bin\Debug\EmmaEnginesLibrary.dll.config
+C:\Users\diana\Documents\projects\RAD\EmmaEnginesProject\EmmaEnginesLibrary\EmmaEnginesLibrary\bin\Debug\EmmaEnginesLibrary.dll
+C:\Users\diana\Documents\projects\RAD\EmmaEnginesProject\EmmaEnginesLibrary\EmmaEnginesLibrary\bin\Debug\EmmaEnginesLibrary.pdb
+C:\Users\diana\Documents\projects\RAD\EmmaEnginesProject\EmmaEnginesLibrary\EmmaEnginesLibrary\obj\Debug\EmmaEnginesLibrary.csproj.AssemblyReference.cache
+C:\Users\diana\Documents\projects\RAD\EmmaEnginesProject\EmmaEnginesLibrary\EmmaEnginesLibrary\obj\Debug\EmmaEnginesLibrary.csproj.CoreCompileInputs.cache
+C:\Users\diana\Documents\projects\RAD\EmmaEnginesProject\EmmaEnginesLibrary\EmmaEnginesLibrary\obj\Debug\EmmaEnginesLibrary.dll
+C:\Users\diana\Documents\projects\RAD\EmmaEnginesProject\EmmaEnginesLibrary\EmmaEnginesLibrary\obj\Debug\EmmaEnginesLibrary.pdb

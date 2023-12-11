@@ -9,84 +9,84 @@ namespace EmmaEnginesProject
 {
     public partial class Customers : System.Web.UI.Page
     {
-        internal static EmmasDataSet dsEmma;
-
-        private DataRow[] rows;
-
-        static Customers()
-        {
-            dsEmma = new EmmasDataSet();
-            customerTableAdapter daCustomer = new customerTableAdapter();
-
-            try
-            {
-                daCustomer.Fill(dsEmma.customer);
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine("Error filling dataset: " + ex.Message);
-            }
-        }
+        static EmmasDataSet dsEmma = new EmmasDataSet();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!this.IsPostBack)
             {
-                BindCustomersGridView();
+                try
+                {
+                    customerTableAdapter daCustomer = new customerTableAdapter();
+                    daCustomer.Fill(dsEmma.customer);
+
+                    fvCustomer.Visible = false;
+                }
+                catch { }
+            }
+        }
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (dsEmma.customer.Count > 0)
+            {
+                //set up criteria based on user inputs
+                string criteria = "";
+                if (txtName.Text.Length > 0)
+                {
+                    criteria = "custFirst LIKE '%" + txtName.Text + "%' OR custLast LIKE '%" + txtName.Text + "%'";
+                }
+
+                if (txtCity.Text.Length > 0)
+                {
+                    if (criteria.Length > 0)
+                    {
+                        criteria += " AND ";
+                    }
+                    criteria += "custCity LIKE '%" + txtCity.Text + "%'";
+                }
+
+                //select records
+                DataRow[] customers = dsEmma.customer.Select(criteria);
+
+                //display records
+                this.lstResults.Items.Clear();
+                foreach (DataRow r in customers)
+                    lstResults.Items.Add($"{r[0]}: {r[1]} {r[2]} - {r[5]}");
+
+                if (customers.Length == 0) this.lstResults.Items.Add("No Results");
+
+                fvCustomer.Visible = false;
             }
         }
 
-        private void BindCustomersGridView()
+        protected void Result_Selected(object sender, EventArgs e)
         {
-            if (dsEmma != null && dsEmma.customer.Rows.Count > 0)
+            string selectedId = "";
+
+            if (lstResults.SelectedIndex != -1)
             {
-                gvCustomers.DataSource = dsEmma.customer;
-                gvCustomers.DataBind();
+                string selectedItem = lstResults.SelectedItem.ToString();
+                string[] parts = selectedItem.Split(new char[] { ':' }, 2);
+
+                if (parts.Length > 0)
+                {
+                    selectedId = parts[0].Trim();
+                }
             }
-            else
-            {
-                lblMessage.Text = "No customer records available.";
-            }
+            Session["CustomerID"] = selectedId;
+
+            fvCustomer.Visible = true;
         }
 
-
-        protected void SearchCustomer_Click(object sender, EventArgs e)
+        protected void Clear_Click(object sender, EventArgs e)
         {
-            if (dsEmma == null || dsEmma.customer == null || dsEmma.customer.Rows.Count == 0)
-            {
-                this.lblMessage.Text = "No records available";
-                return;
-            }
+            //clear inputs and results
+            this.txtName.Text = string.Empty;
+            this.txtCity.Text = string.Empty;
+            this.lstResults.Items.Clear();
+            this.txtName.Focus();
 
-            string criteria = GetCriteria();
-            rows = (criteria.Length > 0) ? dsEmma.customer.Select(criteria) : dsEmma.customer.Select();
-            DisplayCustomers();
-        }
-
-        private string GetCriteria()
-        {
-            string criteria = "";
-            if (this.txtSearch.Text.Length > 0)
-            {
-                criteria = $"custFirst Like '%{txtSearch.Text}%'";
-            }
-            return criteria;
-        }
-
-        private void DisplayCustomers()
-        {
-            if (rows != null && rows.Length > 0)
-            {
-                DataTable dataTable = rows.CopyToDataTable();
-                this.gvCustomers.DataSource = dataTable;
-                this.gvCustomers.DataBind();
-            }
-            else
-            {
-                this.gvCustomers.DataSource = null;
-                this.gvCustomers.DataBind();
-                this.lblMessage.Text = "No records found";
-            }
+            fvCustomer.Visible = false;
         }
 
         protected void SignOut_Click(object sender, EventArgs e)
@@ -94,66 +94,14 @@ namespace EmmaEnginesProject
             var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
             authenticationManager.SignOut();
         }
-        protected void lnkSelect_Click(object sender, EventArgs e)
+
+        protected void CustomerSelected(object sender, CommandEventArgs e)
         {
-            LinkButton lnkSelect = (LinkButton)sender;
-            string customerId = lnkSelect.CommandArgument;
-            // Perform your select action here, e.g., redirect to a details page
-            Response.Redirect("Orders.aspx?id=" + customerId);
-        }
-
-        protected void gvCustomers_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            gvCustomers.EditIndex = e.NewEditIndex;
-            BindCustomersGridView();
-        }
-
-        protected void gvCustomers_RowUpdating(object sender, GridViewUpdateEventArgs e)
-        {
-            DataRow r = dsEmma.customer[gvCustomers.SelectedIndex];
-
-            TextBox txtCustFirst = (TextBox)gvCustomers.Rows[e.RowIndex].FindControl("txtCustFirst");
-            TextBox txtCustLast = (TextBox)gvCustomers.Rows[e.RowIndex].FindControl("txtCustLast");
-            TextBox txtCustPhone = (TextBox)gvCustomers.Rows[e.RowIndex].FindControl("txtCustPhone");
-            TextBox txtCustAddress = (TextBox)gvCustomers.Rows[e.RowIndex].FindControl("txtCustAddress");
-            TextBox txtCustCity = (TextBox)gvCustomers.Rows[e.RowIndex].FindControl("txtCustCity");
-            TextBox txtCustPostal = (TextBox)gvCustomers.Rows[e.RowIndex].FindControl("txtCustPostal");
-            TextBox txtCustEmail = (TextBox)gvCustomers.Rows[e.RowIndex].FindControl("txtCustEmail");
-
-            r[1] = txtCustFirst.Text;
-            r[2] = txtCustLast.Text;
-            r[3] = txtCustPhone.Text;
-            r[4] = txtCustAddress.Text;
-            r[5] = txtCustCity.Text;
-            r[6] = txtCustPostal.Text;
-            r[7] = txtCustEmail.Text;
-
-            int customerId = Convert.ToInt32(gvCustomers.DataKeys[e.RowIndex].Value);
-
-            try
+            if (e.CommandName == "Select")
             {
-                customerTableAdapter daCustomer = new customerTableAdapter();
-
-                daCustomer.Update(r);
-                dsEmma.AcceptChanges();
-
-
-                gvCustomers.EditIndex = -1;
-                BindCustomersGridView();
-            }
-            catch (Exception ex)
-            {
-
-                lblMessage.Text = "Update failed: " + ex.Message;
+                // Storing CustomerID in Session
+                Session["SelectedCustomerID"] = e.CommandArgument.ToString();
             }
         }
-
-
-        protected void gvCustomers_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-        {
-            gvCustomers.EditIndex = -1;
-            BindCustomersGridView();
-        }
-
     }
 }

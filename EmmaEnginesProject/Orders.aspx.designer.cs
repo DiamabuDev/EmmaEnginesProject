@@ -51,21 +51,21 @@ namespace EmmaEnginesProject
         protected global::System.Web.UI.WebControls.Button btnNewOrder;
 
         /// <summary>
-        /// gvOrders control.
+        /// txtSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvOrders;
+        protected global::System.Web.UI.WebControls.TextBox txtSearch;
 
         /// <summary>
-        /// odsOrders control.
+        /// btnSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource odsOrders;
+        protected global::System.Web.UI.WebControls.Button btnSearch;
     }
 }

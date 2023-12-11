@@ -116,9 +116,6 @@
     </Content>
     <Content Include="Assets\login-img.png" />
     <Content Include="Assets\logo.png" />
-    <Content Include="CreateCustomer.aspx" />
-    <Content Include="CreateOrder.aspx" />
-    <Content Include="Customer2.aspx" />
     <Content Include="Customers.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
@@ -135,27 +132,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateCustomer.aspx.cs">
-      <DependentUpon>CreateCustomer.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CreateCustomer.aspx.designer.cs">
-      <DependentUpon>CreateCustomer.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CreateOrder.aspx.cs">
-      <DependentUpon>CreateOrder.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CreateOrder.aspx.designer.cs">
-      <DependentUpon>CreateOrder.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Customer2.aspx.cs">
-      <DependentUpon>Customer2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Customer2.aspx.designer.cs">
-      <DependentUpon>Customer2.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Customers.aspx.cs">
       <DependentUpon>Customers.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

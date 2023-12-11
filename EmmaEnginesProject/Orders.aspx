@@ -15,12 +15,10 @@
                 <img src="Assets/logo.png" alt="Icon" />
             </div>
             <div class="navbar-links">
-                <a href="#" class="nav-link">Home</a>
-                <a href="#" class="nav-link">About</a>
-                <a href="#" class="nav-link">Orders</a>
-                <a href="#" class="nav-link">Customers</a>
+                <a href="/Home.aspx" class="nav-link">Home</a>
+                <a href="/Orders.aspx" class="nav-link">Orders</a>
+                <a href="/Customers.aspx" class="nav-link">Customers</a>
                 <a href="#" class="nav-link">Employees</a>
-                <a href="#" class="nav-link">Contact</a>
             </div>
             <div class="navbar-signout">
                 <asp:LinkButton ID="lnkSignOut" runat="server" OnClick="SignOut_Click" CssClass="sign-out">Sign out</asp:LinkButton>
@@ -29,44 +27,12 @@
         <div class="container">
             <asp:Label ID="lblHeading" runat="server" Text="All Orders" CssClass="heading"></asp:Label>
             <asp:Button ID="btnNewOrder" runat="server" Text="New Order" CssClass="button" />
-            
-            <asp:GridView ID="gvOrders" runat="server" AutoGenerateColumns="False" 
-                DataKeyNames="id" CssClass="gridView" DataSourceID="odsOrders">
-                <Columns>
-                    <asp:CommandField ShowEditButton="True" ShowSelectButton="True" />
-                    <asp:BoundField DataField="ordNumber" HeaderText="ordNumber" SortExpression="ordNumber" />
-                    <asp:BoundField DataField="ordDate" HeaderText="ordDate" SortExpression="ordDate" />
-                    <asp:CheckBoxField DataField="ordPaid" HeaderText="ordPaid" SortExpression="ordPaid" />
-                    <asp:BoundField DataField="paymentID" HeaderText="paymentID" SortExpression="paymentID" />
-                    <asp:BoundField DataField="custID" HeaderText="custID" SortExpression="custID" />
-                    <asp:BoundField DataField="empID" HeaderText="empID" SortExpression="empID" />
-                </Columns>
-            </asp:GridView>
-
-            <asp:ObjectDataSource ID="odsOrders" runat="server" 
-                TypeName="EmmaLibrary.EmmasDatasetTableAdapters.orderTableAdapter" 
-                SelectMethod="GetData" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" UpdateMethod="Update">
-                <DeleteParameters>
-                    <asp:Parameter Name="Original_id" Type="Int32" />
-                </DeleteParameters>
-                <InsertParameters>
-                    <asp:Parameter Name="ordNumber" Type="String" />
-                    <asp:Parameter Name="ordDate" Type="DateTime" />
-                    <asp:Parameter Name="ordPaid" Type="Boolean" />
-                    <asp:Parameter Name="paymentID" Type="Int32" />
-                    <asp:Parameter Name="custID" Type="Int32" />
-                    <asp:Parameter Name="empID" Type="Int32" />
-                </InsertParameters>
-                <UpdateParameters>
-                    <asp:Parameter Name="ordNumber" Type="String" />
-                    <asp:Parameter Name="ordDate" Type="DateTime" />
-                    <asp:Parameter Name="ordPaid" Type="Boolean" />
-                    <asp:Parameter Name="paymentID" Type="Int32" />
-                    <asp:Parameter Name="custID" Type="Int32" />
-                    <asp:Parameter Name="empID" Type="Int32" />
-                    <asp:Parameter Name="Original_id" Type="Int32" />
-                </UpdateParameters>
-            </asp:ObjectDataSource>
+            <div class="button-container">
+                <asp:TextBox ID="txtSearch" runat="server" CssClass="input-text"></asp:TextBox>
+                <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="button" OnClick="SearchOrder_Click" />
+            </div>
+            <br />
+            <br />
         </div>
     </form>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />

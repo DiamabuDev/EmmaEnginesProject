@@ -9,122 +9,125 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
     <link href="Styles/customers.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
-</head>
+    </head>
 <body>
-<form id="form1" runat="server">
-    <nav class="navbar">
-        <div class="navbar-icon">
-            <img src="Assets/logo.png" alt="Icon" />
-        </div>
-        <div class="navbar-links">
-            <a href="#" class="nav-link">Home</a>
-            <a href="#" class="nav-link">About</a>
-            <a href="#" class="nav-link">Orders</a>
-            <a href="#" class="nav-link">Customers</a>
-            <a href="#" class="nav-link">Employees</a>
-            <a href="#" class="nav-link">Contact</a>
-        </div>
-        <div class="navbar-signout">
-            <asp:LinkButton ID="lnkSignOut" runat="server" OnClick="SignOut_Click" CssClass="sign-out">Sign out</asp:LinkButton>
-        </div>          
-</nav>
-        <div class="container">
-            <asp:Label ID="lblHello" runat="server" Text="Hello, " CssClass="label-hello"></asp:Label>
-            <asp:Label ID="lblHeading" runat="server" Text="All Customers" CssClass="heading"></asp:Label>
-            <asp:Button ID="btnNewCustomer" runat="server" Text="New Customer" CssClass="button" />
-            <div class="button-container">
-                <asp:TextBox ID="txtSearch" runat="server" CssClass="input-text"></asp:TextBox>
-                <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="button" OnClick="SearchCustomer_Click" />
-            </div>
-            <asp:Label ID="lblMessage" runat="server" Text="" CssClass="label-hello"></asp:Label>
-            
-            <asp:GridView ID="gvCustomers" runat="server" AutoGenerateColumns="False" 
-                DataKeyNames="id" CssClass="gridView" OnRowEditing="gvCustomers_RowEditing" 
-                OnRowUpdating="gvCustomers_RowUpdating" OnRowCancelingEdit="gvCustomers_RowCancelingEdit">
-                <Columns>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:LinkButton ID="lnkSelect" runat="server" CommandName="Select" CommandArgument='<%# Eval("id") %>' OnClick="lnkSelect_Click" CssClass="btn-select">
-                                <i class="fas fa-hand-pointer"></i> 
-                            </asp:LinkButton>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="First Name" SortExpression="custFirst">
-                        <ItemTemplate>
-                            <%# Eval("custFirst") %>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:TextBox ID="txtCustFirst" runat="server" Text='<%# Bind("custFirst") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Last Name" SortExpression="custLast">
-                        <ItemTemplate>
-                            <%# Eval("custLast") %>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:TextBox ID="txtCustLast" runat="server" Text='<%# Bind("custLast") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Phone" SortExpression="custPhone">
-                        <ItemTemplate>
-                            <%# Eval("custPhone") %>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:TextBox ID="txtCustPhone" runat="server" Text='<%# Bind("custPhone") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Address" SortExpression="custAddress">
-                        <ItemTemplate>
-                            <%# Eval("custAddress") %>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:TextBox ID="txtCustAddress" runat="server" Text='<%# Bind("custAddress") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="City" SortExpression="custCity">
-                        <ItemTemplate>
-                            <%# Eval("custCity") %>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:TextBox ID="txtCustCity" runat="server" Text='<%# Bind("custCity") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Postal Code" SortExpression="custPostal">
-                        <ItemTemplate>
-                            <%# Eval("custPostal") %>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:TextBox ID="txtCustPostal" runat="server" Text='<%# Bind("custPostal") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Email" SortExpression="custEmail">
-                        <ItemTemplate>
-                            <%# Eval("custEmail") %>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:TextBox ID="txtCustEmail" runat="server" Text='<%# Bind("custEmail") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField ShowHeader="False">
-                        <EditItemTemplate>
-                            <asp:LinkButton ID="btnUpdate" runat="server" CommandName="Update" CssClass="btn-update">
-                                <i class="fas fa-check"></i>
-                            </asp:LinkButton>
-                            <asp:LinkButton ID="btnCancel" runat="server" CommandName="Cancel" CssClass="btn-cancel">
-                                <i class="fas fa-times"></i>
-                            </asp:LinkButton>
-                        </EditItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField ShowHeader="False">
-                        <ItemTemplate>
-                            <asp:LinkButton ID="lnkEdit" runat="server" CommandName="Edit" CommandArgument='<%# Eval("id") %>' CssClass="btn-edit">
-                                <i class="fas fa-edit"></i> 
-                            </asp:LinkButton>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-            </asp:GridView>
-            <asp:ObjectDataSource ID="odsCustomers" runat="server" DeleteMethod="Delete" InsertMethod="Insert" UpdateMethod="Update" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="EmmaLibrary.EmmasDatasetTableAdapters.customerTableAdapter">
+<body>
+    <form id="form1" runat="server">
+        <p>
+            <br />
+        </p>
+        <asp:Label ID="Label3" runat="server" Text="Search Customer"></asp:Label>
+        <br />
+        <br />
+        <asp:Label ID="Label4" runat="server" Text="Name"></asp:Label>
+        <p>
+            <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+        </p>
+        <p>
+            <asp:Label ID="Label5" runat="server" Text="City"></asp:Label>
+        </p>
+        <p>
+            <asp:TextBox ID="txtCity" runat="server"></asp:TextBox>
+        </p>
+        <p>
+            <asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search" />
+            <asp:Button ID="btnClear" runat="server" Text="Clear" OnClick="Clear_Click" />
+        </p>
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:ListBox ID="lstResults" runat="server" Height="258px" Width="378px" AutoPostBack="True" OnSelectedIndexChanged="Result_Selected"></asp:ListBox>
+        </p>
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:FormView ID="fvCustomer" runat="server" DataKeyNames="id" DataSourceID="odsCustomers">
+                <EditItemTemplate>
+                    id:
+                    <asp:Label ID="idLabel1" runat="server" Text='<%# Eval("id") %>' />
+                    <br />
+                    custFirst:
+                    <asp:TextBox ID="custFirstTextBox" runat="server" Text='<%# Bind("custFirst") %>' />
+                    <br />
+                    custLast:
+                    <asp:TextBox ID="custLastTextBox" runat="server" Text='<%# Bind("custLast") %>' />
+                    <br />
+                    custPhone:
+                    <asp:TextBox ID="custPhoneTextBox" runat="server" Text='<%# Bind("custPhone") %>' />
+                    <br />
+                    custAddress:
+                    <asp:TextBox ID="custAddressTextBox" runat="server" Text='<%# Bind("custAddress") %>' />
+                    <br />
+                    custCity:
+                    <asp:TextBox ID="custCityTextBox" runat="server" Text='<%# Bind("custCity") %>' />
+                    <br />
+                    custPostal:
+                    <asp:TextBox ID="custPostalTextBox" runat="server" Text='<%# Bind("custPostal") %>' />
+                    <br />
+                    custEmail:
+                    <asp:TextBox ID="custEmailTextBox" runat="server" Text='<%# Bind("custEmail") %>' />
+                    <br />
+                    <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
+                    &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    custFirst:
+                    <asp:TextBox ID="custFirstTextBox" runat="server" Text='<%# Bind("custFirst") %>' />
+                    <br />
+                    custLast:
+                    <asp:TextBox ID="custLastTextBox" runat="server" Text='<%# Bind("custLast") %>' />
+                    <br />
+                    custPhone:
+                    <asp:TextBox ID="custPhoneTextBox" runat="server" Text='<%# Bind("custPhone") %>' />
+                    <br />
+                    custAddress:
+                    <asp:TextBox ID="custAddressTextBox" runat="server" Text='<%# Bind("custAddress") %>' />
+                    <br />
+                    custCity:
+                    <asp:TextBox ID="custCityTextBox" runat="server" Text='<%# Bind("custCity") %>' />
+                    <br />
+                    custPostal:
+                    <asp:TextBox ID="custPostalTextBox" runat="server" Text='<%# Bind("custPostal") %>' />
+                    <br />
+                    custEmail:
+                    <asp:TextBox ID="custEmailTextBox" runat="server" Text='<%# Bind("custEmail") %>' />
+                    <br />
+                    <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
+                    &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    id:
+                    <asp:Label ID="idLabel" runat="server" Text='<%# Eval("id") %>' />
+                    <br />
+                    custFirst:
+                    <asp:Label ID="custFirstLabel" runat="server" Text='<%# Bind("custFirst") %>' />
+                    <br />
+                    custLast:
+                    <asp:Label ID="custLastLabel" runat="server" Text='<%# Bind("custLast") %>' />
+                    <br />
+                    custPhone:
+                    <asp:Label ID="custPhoneLabel" runat="server" Text='<%# Bind("custPhone") %>' />
+                    <br />
+                    custAddress:
+                    <asp:Label ID="custAddressLabel" runat="server" Text='<%# Bind("custAddress") %>' />
+                    <br />
+                    custCity:
+                    <asp:Label ID="custCityLabel" runat="server" Text='<%# Bind("custCity") %>' />
+                    <br />
+                    custPostal:
+                    <asp:Label ID="custPostalLabel" runat="server" Text='<%# Bind("custPostal") %>' />
+                    <br />
+                    custEmail:
+                    <asp:Label ID="custEmailLabel" runat="server" Text='<%# Bind("custEmail") %>' />
+                    <br />
+                    <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
+                    &nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" />
+                    &nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="New" />
+                </ItemTemplate>
+            </asp:FormView>
+        </p>
+        <p>
+            <asp:ObjectDataSource ID="odsCustomers" runat="server" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="EmmaEnginesLibrary.EmmasDataSetTableAdapters.customerUpdate" UpdateMethod="Update">
                 <DeleteParameters>
                     <asp:Parameter Name="Original_id" Type="Int32" />
                 </DeleteParameters>
@@ -137,6 +140,9 @@
                     <asp:Parameter Name="custPostal" Type="String" />
                     <asp:Parameter Name="custEmail" Type="String" />
                 </InsertParameters>
+                <SelectParameters>
+                    <asp:SessionParameter Name="Param1" SessionField="CustomerID" Type="Int32" />
+                </SelectParameters>
                 <UpdateParameters>
                     <asp:Parameter Name="custFirst" Type="String" />
                     <asp:Parameter Name="custLast" Type="String" />
@@ -148,8 +154,9 @@
                     <asp:Parameter Name="Original_id" Type="Int32" />
                 </UpdateParameters>
             </asp:ObjectDataSource>
-            <br />
-        </div>
+        </p>
+        <p>
+            &nbsp;</p>
     </form>
 </body>
 </html>
